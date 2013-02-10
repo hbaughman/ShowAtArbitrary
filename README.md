@@ -1,6 +1,6 @@
 # RecenterTopBottom
 
-A [Sublime Text 2][ST2] plugin that cycles between moving the current line to the top, middle and bottom of the visible screen area.
+A [Sublime Text 3][ST3] plugin that cycles between moving the current line to the top, middle and bottom of the visible screen area.
 
 ## Installation
 
@@ -37,4 +37,4 @@ To change the ordering create a file called `Packages/User/RecenterTopBottom.sub
         "recenter_positions": ["middle", "top", "bottom"]
     }
 
-[ST2]: http://www.sublimetext.com/2
+[ST3]: http://www.sublimetext.com/3
