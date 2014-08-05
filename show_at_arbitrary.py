@@ -4,7 +4,7 @@ from itertools import cycle
 
 _settings = None
 def settings():
-    return _settings or sublime.load_settings('RecenterTopBottom.sublime-settings')
+    return _settings or sublime.load_settings('ShowAtArbitrary.sublime-settings')
 
 positions = None
 
@@ -15,7 +15,7 @@ class CaretWatcher(sublime_plugin.EventListener):
         positions = cycle(settings().get('recenter_positions'))
 
 
-class RecenterTopBottomCommand(sublime_plugin.TextCommand):
+class ShowAtArbitraryCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         global positions
         positions = positions or cycle(settings().get('recenter_positions'))
