@@ -20,10 +20,10 @@ class RecenterTopBottomCommand(sublime_plugin.TextCommand):
         global positions
         positions = positions or cycle(settings().get('recenter_positions'))
         posn = next(positions)
-        if posn == 'top':
-            self.show_at_top()
-        elif posn == 'bottom':
-            self.show_at_bottom()
+        if posn > 0:
+            self.show_at_top(posn)
+        elif posn < 0:
+            self.show_at_bottom(abs(posn))
         else:
             self.view.run_command('show_at_center')
 
@@ -31,14 +31,14 @@ class RecenterTopBottomCommand(sublime_plugin.TextCommand):
         caret = self.view.sel()[0].begin()
         return self.view.rowcol(caret)[0]
 
-    def show_at_top(self):
+    def show_at_top(self, target_line):
         top, _ = self.screen_extents()
-        offset = self.row() - top - 1
+        offset = self.row() - top - target_line
         self.view.run_command('scroll_lines', {'amount': -offset})
 
-    def show_at_bottom(self):
+    def show_at_bottom(self, target_line):
         _, bottom = self.screen_extents()
-        offset = bottom - self.row() - 1
+        offset = bottom - self.row() - target_line
         self.view.run_command('scroll_lines', {'amount': offset})
 
     def screen_extents(self):
