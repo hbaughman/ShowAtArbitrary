@@ -1,40 +1,29 @@
-# RecenterTopBottom
+# ShowAtArbitrary
 
 A [Sublime Text 3][ST3] plugin that cycles between moving the current line to the top, middle and bottom of the visible screen area.
 
 ## Installation
 
-1. Open the Sublime Text 2 Packages folder:
-
-    - OS X: `~/Library/Application Support/Sublime Text 2/Packages/`
-    - Windows: `%APPDATA%/Sublime Text 2/Packages/`
-    - Linux: `~/.Sublime Text 2/Packages/`
-
-2. Clone this repo:
-<pre>
-git clone git://github.com/mburrows/RecenterTopBottom.git
-</pre>
+1. Click `Preferences > Browse Packages...`
+2. Clone this repo to that directory: <pre> git clone git://github.com/hbaughman/ShowAtArbitrary.git </pre>
 
 ## Commands
 
-This plugin provides a single command called `recenter_top_bottom`. Repeated calls to this command will move the current line to the top, middle and bottom of the visible screen area. The ordering can be customised using the settings file.
+This plugin provides a single command called `show_at_arbitrary`. Repeated calls to this command will move the current line to the top, middle, and bottom of the visible screen area. The margin between the current line and the edge of the screen, as well as the order, can be customized in the settings file.
 
 ## Keybindings
 
-The default keybinding is similar to `ctrl+l` which is bound to the built in `show_at_center` command:
+The default keybinding is `ctrl+shift+g`:
 
-    { "keys": ["ctrl+alt+l"], "command": "recenter_top_bottom" }
+    { "keys": ["ctrl+shift+g"], "command": "show_at_arbitrary" }
 
-Personally I override the `show_at_center` command with `recenter_top_bottom`, it provides all the functionality of the original command and more. This can be accomplished by putting the following in your `Key Bindings - User` file:
-
-    { "keys": ["ctrl+l"], "command": "recenter_top_bottom" }
 
 ## Settings
 
-To change the ordering create a file called `Packages/User/RecenterTopBottom.sublime-settings` and redefine the `recenter_positions` setting as follows:
+To change the margins between the current line and the edge of the screen or the ordering of jumps create a file called `Packages/User/ShowAtArbitrary.sublime-settings` and redefine the `target_lines` setting. 
 
-    {
-        "recenter_positions": ["middle", "top", "bottom"]
-    }
+Positive values cause the page to be offset that many lines from the top of the screen. Negative values, that many lines from the bottom. A value of `0` moves the current line to the center as the default sublime feature `show_at_center`.
+
+    { "target_lines": [4, 0, -4] }
 
 [ST3]: http://www.sublimetext.com/3
